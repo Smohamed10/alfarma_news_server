@@ -25,9 +25,17 @@ app.listen(4004,"localhost",()=>{
  app.use("/login",require("./routes/auth/login"));
 //======== admin function ========//
 app.use("/createadmin",require("./routes/admin_fun/create_admin"));
-app.use("/creatnews",require("./routes/admin_fun/createnews"));
-app.use("/createads",require("./routes/admin_fun/createads"));
+app.use("/creatnews",require("./routes/news/createnews"));
+app.use("/createads",require("./routes/ads/createads"));
 //======== user function ========//
-app.use("/getpost",require("./routes/user function/getnew"));
-app.use("/getallnews",require("./routes/user function/getallnews"));
-app.use("/getallads",require("./routes/user function/getallads"));
+app.use("/getpost",require("./routes/news/getnew"));
+app.use("/getallnews",require("./routes/news/getallnews"));
+app.use("/getallads",require("./routes/ads/getallads"));
+app.use("/createcomment",require("./routes/comments/createcomment"));
+app.use("/getcomment",require("./routes/comments/getcomment"));
+//======== gets ============//
+app.use("/catget",require("./routes/gets/getpostbycat"));
+app.use("/mostpopular",require("./routes/gets/getpopularnews"));
+app.use("/lastestnews",require("./routes/gets/getlastestnews"));
+app.use("/lastbycat",require("./routes/gets/lastbycat"));
+app.use("/last5",require("./routes/gets/last5"));

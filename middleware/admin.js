@@ -1,4 +1,4 @@
-const connection = require("../db/dbconnection");
+const connection = require("../db/dbConnection");
 const util = require("util"); // helper 
 
 const admin = async (req,res,next)=>{
