@@ -22,7 +22,7 @@ router.post("/", admin, async (req, res) => {
                 hour: 'numeric',
                 minute: 'numeric',
                 second: 'numeric',
-                hour12: false
+                hour12: true
             };
 
             return new Date().toLocaleString('en-US', options);
