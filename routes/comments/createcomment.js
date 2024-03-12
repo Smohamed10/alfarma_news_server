@@ -9,7 +9,7 @@ const admin = require("../../middleware/admin");
 
 router.post("/", async (req, res) => {
     // get input
-    const { email , desc, postID } = req.body;
+    const { name,email , desc, postID } = req.body;
     try {
         const query = util.promisify(connection.query).bind(connection);
         // check user exist 
@@ -23,7 +23,7 @@ router.post("/", async (req, res) => {
                 hour: 'numeric',
                 minute: 'numeric',
                 second: 'numeric',
-                hour12: false
+                hour12: true
             };
 
             return new Date().toLocaleString('en-US', options);
@@ -47,6 +47,7 @@ router.post("/", async (req, res) => {
             // prepare th eobject 
             const commentobj = {
                 email: email,
+                name:name,
                 desc: desc,
                 postID: postID,
                 time: time2

@@ -8,9 +8,10 @@ const authorized = require("../../middleware/authorized");
 
 
 //======= function increment the rate of post when get the post =====//
-router.get("/",body("catname"),async(req,res)=>{
+router.get("/",async(req,res)=>{
+    const catName = req.query.catname; // Access query parameter
     const query = util.promisify(connection.query).bind(connection); // transform query to promise to can use await/ async
-    const newspost = await query("SELECT * FROM news WHERE category = ? ORDER BY time DESC LIMIT 3", [req.body.catname]);
+    const newspost = await query("SELECT * FROM news WHERE category = ? ORDER BY time DESC LIMIT 3", [catName]);
     res.status(202).json(newspost);
     
 })

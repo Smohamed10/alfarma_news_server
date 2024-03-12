@@ -8,12 +8,12 @@ const admin = require("../../middleware/admin");
 
 // function get all comments by postid 
 
-router.get("/",body("postid"),async(req,res)=>{
+router.get("/",async(req,res)=>{
     try
     {
         const query = util.promisify(connection.query).bind(connection); // transform query to promise to can use await/ async
-        const comentList = await query ("select * from comment where postID = ?",req.body.postid);
-        const postobj = await query ("select * from news where id = ? ",req.body.postid);
+        const comentList = await query ("select * from comment where postID = ?",req.query.postid);
+        const postobj = await query ("select * from news where id = ? ",req.query.postid);
         if(!comentList[0])
         {
             res.status(404).json("sorry the post dont have any comment ...");             
