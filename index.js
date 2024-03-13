@@ -10,7 +10,7 @@ app.use(express.static("upload"));
 const cors = require("cors");
 // CORS middleware with specific origin
 app.use(cors({
-    origin: 'https://elfarama.com', // Replace with your frontend's domain
+    origin: 'https://alfarma-news-client.vercel.app', // Replace with your frontend's domain
     methods: ['GET', 'POST','DELETE','PUT'], // Allow only specific HTTP methods
   }));
   
