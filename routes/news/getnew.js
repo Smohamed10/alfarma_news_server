@@ -10,8 +10,8 @@ const authorized = require("../../middleware/authorized");
 //======= function increment the rate of post when get the post =====//
 router.get("/:id",async(req,res)=>{
     const query = util.promisify(connection.query).bind(connection); // transform query to promise to can use await/ async
-    const newspost=  await query ("select * from news where id = ?",req.body.id);
-    await query ("UPDATE news SET seen = seen + 1 WHERE id = ?",req.body.id);
+    const newspost=  await query ("select * from news where id = ?",req.query.id);
+    await query ("UPDATE news SET seen = seen + 1 WHERE id = ?",req.query.id);
     res.status(202).json(newspost);
     
 })
