@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const connection = require('../../db/dbConnection');
+const connection = require("../../db/dbConnection.js");
 const util = require("util"); // helper 
 
 // function to get all news by category 
