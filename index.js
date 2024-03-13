@@ -8,14 +8,19 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("upload"));
 const cors = require("cors");
-app.use(cors());  // allow https requst,respons
-
-
+// CORS middleware with specific origin
+app.use(cors({
+    origin: 'elfarama.com', // Replace with your frontend's domain
+    methods: ['GET', 'POST','DELETE','PUT'], // Allow only specific HTTP methods
+    allowedHeaders: ['Content-Type', 'Authorization'], // Allow only specific headers
+  }));
+  
 //======== run the app ============//
-app.listen(4004,"localhost",()=>{
-
-    console.log("SERVER IS RUNNING....");
-})
+// Run the app
+const port = 4004;
+app.listen(port || process.env.port, () => {
+    console.log(`SERVER IS RUNNING....${port}`);
+});
 
 
 //======== require routes ========//
