@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const connection = require("../../db/dbConnection.js");
+const connection = require("../../db/dbconnection.js");
 const { body, validationResult } = require('express-validator');
 const util = require("util"); // helper 
 const bcrypt = require("bcrypt");
