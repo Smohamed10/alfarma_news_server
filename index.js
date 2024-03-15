@@ -1,29 +1,22 @@
 //================= init express app ===============
 const express = require("express");
-const keepAwake = require('./keepAwake'); // Import the keepAwake module
-
 const app = express();
-
 
 //=================Global middleware==================
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("upload"));
 const cors = require("cors");
-// CORS middleware with specific origin
-app.use(cors({
-    origin: 'https://elfarama.com', // Replace with your frontend's domain
-    methods: ['GET', 'POST','DELETE','PUT'], // Allow only specific HTTP methods
-    allowedHeaders: ['Content-Type', 'Authorization'], // Allow only specific headers
-  }));
-  
+
+// CORS middleware allowing requests from any origin
+app.use(cors());
+
 //======== run the app ============//
 // Run the app
 const port = 4004;
 app.listen(port || process.env.port, () => {
     console.log(`SERVER IS RUNNING....${port}`);
 });
-
 
 //======== require routes ========//
 
