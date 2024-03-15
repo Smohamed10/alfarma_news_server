@@ -1,7 +1,8 @@
 //================= init express app ===============
 const express = require("express");
 const app = express();
-
+const job=require('./keepAwake');
+job.job.start();
 //=================Global middleware==================
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
