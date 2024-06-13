@@ -20,6 +20,9 @@ app.listen(port || process.env.port, () => {
     console.log(`SERVER IS RUNNING....${port}`);
 });
 
+
+//========  cors =================//
+app(cors())
 //======== require routes ========//
 
 //======== auth function =========//
