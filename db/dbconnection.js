@@ -11,7 +11,6 @@ function handleDisconnect() {
     port:"3306"
   });
 
-
   connection.connect((err) => {
     if (err) {
       console.log('Error when connecting to db:', err);

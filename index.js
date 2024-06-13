@@ -20,9 +20,6 @@ app.listen(port || process.env.port, () => {
     console.log(`SERVER IS RUNNING....${port}`);
 });
 
-
-//========  cors =================//
-app(cors())
 //======== require routes ========//
 
 //======== auth function =========//
@@ -37,7 +34,7 @@ app.use("/getpost",require("./routes/news/getnew"));
 app.use("/getallnews",require("./routes/news/getallnews"));
 app.use("/getallads",require("./routes/ads/getallads"));
 app.use("/createcomment",require("./routes/comments/createcomment"));
-app.use("/getcomment",require("./routes/comments/getcomment"));
+app.use("/getcomment",require("./routes/comments/getcomment"));~
 //======== gets ============//
 app.use("/catget",require("./routes/gets/getpostbycat"));
 app.use("/mostpopular",require("./routes/gets/getpopularnews"));
