@@ -4,12 +4,13 @@ let connection;
 
 function handleDisconnect() {
   connection = mysql.createConnection({
-    host:"bs1fexw97rcgcw7znhbw-mysql.services.clever-cloud.com",
-    user:"uymmmja19megof2i",
-    database:"bs1fexw97rcgcw7znhbw",
-    password:"NuWW5hlAljjulPt5i7iN",
+    host:"localhost",
+    user:"root",
+    database:"elfarama_db",
+    password:"elfaramawy2024",
     port:"3306"
   });
+
 
   connection.connect((err) => {
     if (err) {
