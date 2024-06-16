@@ -14,6 +14,7 @@ const cors = require("cors");
 // CORS middleware allowing requests from any origin
 app.use(cors());
 
+
 //======== run the app ============//
 // Run the app
 const port = 4002;
