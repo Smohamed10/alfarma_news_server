@@ -5,11 +5,12 @@ const util = require("util"); // helper
 const bcrypt = require("bcrypt");
 const crypto = require("crypto");
 const admin = require("../../middleware/admin");
+const upload = require(`../../middleware/uploadimg.js`);
 // function create newss
 
-router.post("/", admin, async (req, res) => {
+router.post("/", admin,upload.single("pic_path"), async (req, res) => {
     // get input
-    const { writer_name, name, content, category, pic_path , publicID } = req.body;
+    const { writer_name, name, content, category, publicID } = req.body;
     try {
         const query = util.promisify(connection.query).bind(connection); // transform query to promise to can use await/ async
         // get the current time 
@@ -35,7 +36,7 @@ router.post("/", admin, async (req, res) => {
             name: name,
             content: content,
             category: category,
-            pic_path: pic_path,
+            pic_path: req.file.originalname,
             time: time2,
             publicID:publicID   
         }
