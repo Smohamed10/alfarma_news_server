@@ -1,33 +1,43 @@
 const router = require("express").Router();
 const connection = require("../../db/dbconnection.js");
-const { body, validationResult } = require('express-validator');
-const util = require("util"); // helper 
+const { body, validationResult } = require("express-validator");
+const util = require("util"); // helper
 const bcrypt = require("bcrypt");
 const crypto = require("crypto");
 const admin = require("../../middleware/admin");
-// function create newss
+const upload = require("../../middleware/uploadimg.js"); // Import the Multer configuration
 
-router.post("/", admin, async (req, res) => {
-    // get input
-    const { name, description , ads_img,ad_category} = req.body;
-    try {
-        const query = util.promisify(connection.query).bind(connection);
-        // prepare the object to insert it in data base 
-        const adsobj = {
-            name : name ,
-            description : description ,
-            ads_img : ads_img,
-            ad_category:ad_category
-        };
-        // insert it in date base 
-        await query ("insert into ads set ? ",adsobj);
-        res.status(200).json(req.body);
+// function create ads
+router.post("/", admin, upload.single("ads_img"), async (req, res) => {
+  // get input
+  const { name, description, ad_category } = req.body;
 
-    }
-    catch (err) {
-        res.status(404).json(err)
-    }
-})
+  try {
+    const query = util.promisify(connection.query).bind(connection);
 
+    // Log request data for debugging
+    console.log("Request Body:", req.body);
+    console.log("File:", req.file);
+
+    // Get the uploaded file's path
+    const ads_img_path = req.file ? req.file.path : null;
+
+    // Prepare the object to insert it in the database
+    const adsobj = {
+      name: name,
+      description: description,
+      ads_img:
+        "/home/elfarama_server/htdocs/api.elfarama.com/uploads/" + ads_img_path, // Save the file path
+      ad_category: ad_category,
+    };
+
+    // Insert it into the database
+    await query("insert into ads set ?", adsobj);
+    res.status(200).json(adsobj);
+  } catch (err) {
+    console.error("Error:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
 
 module.exports = router;

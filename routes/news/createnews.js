@@ -5,9 +5,9 @@ const util = require("util"); // helper
 const bcrypt = require("bcrypt");
 const crypto = require("crypto");
 const admin = require("../../middleware/admin");
-const upload = require(`../../middleware/uploadimg.js`);
-// function create newss
+const upload = require("../../middleware/uploadimg.js");
 
+// function create news
 router.post("/", admin, upload.single("pic_path"), async (req, res) => {
   // get input
   const { writer_name, name, content, category, publicID } = req.body;
@@ -38,15 +38,17 @@ router.post("/", admin, upload.single("pic_path"), async (req, res) => {
       content: content,
       category: category,
       pic_path:
-        "/home/elfarama_server/htdocs/api.elfarama.com/uploads/category/" +req.file.originalname,
+        "/home/elfarama_server/htdocs/api.elfarama.com/uploads/" +
+        req.file.path,
       time: time2,
       publicID: publicID,
     };
     // insert the object in data base
-    await query("insert into news set ? ", newsobj),
-      res.status(200).json(newsobj);
+    await query("insert into news set ? ", newsobj);
+    res.status(200).json(newsobj);
   } catch (err) {
-    res.status(404).json(err);
+    console.error("Error:", err);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 });
 
