@@ -26,8 +26,7 @@ router.post("/", admin, upload.single("ads_img"), async (req, res) => {
     const adsobj = {
       name: name,
       description: description,
-      ads_img:
-        "/home/elfarama_server/htdocs/api.elfarama.com/uploads/" + ads_img_path, // Save the file path
+      ads_img: "/home/elfarama_server/htdocs/api.elfarama.com/" + ads_img_path, // Save the file path
       ad_category: ad_category,
     };
 
