@@ -30,14 +30,15 @@ router.post("/", admin, upload.single("pic_path"), async (req, res) => {
     }
     const time2 = getCurrentDateInCairo();
 
+    // Replace backslashes with forward slashes in the file path
+    const pic_path = req.file ? req.file.path.replace(/\\/g, '/') : null;
+
     const newsobj = {
       writer_name: writer_name,
       name: name,
       content: content,
       category: category,
-      pic_path:
-        "/home/elfarama_server/htdocs/api.elfarama.com/" +
-        req.file.path,
+      pic_path: "/home/elfarama_server/htdocs/api.elfarama.com/" + pic_path,
       time: time2,
       publicID: publicID,
     };
