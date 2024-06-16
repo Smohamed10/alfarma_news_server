@@ -23,7 +23,7 @@ app.listen(port || process.env.port, () => {
 //======== require routes ========//
 
 //======== auth function =========//
- app.use("/register",require("./routes/auth/register"));
+ app.use("api/register",require("./routes/auth/register"));
  app.use("/login",require("./routes/auth/login"));
 //======== admin function ========//
 app.use("/createadmin",require("./routes/admin_fun/create_admin"));
