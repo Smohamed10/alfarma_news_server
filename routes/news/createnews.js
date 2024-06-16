@@ -38,7 +38,7 @@ router.post("/", admin, upload.single("pic_path"), async (req, res) => {
       name: name,
       content: content,
       category: category,
-      pic_path: `"/home/elfarama_server/htdocs/api.elfarama.com/${pic_path}"`,
+      pic_path: `"https://api.elfarama.com/uploads/${pic_path}"`,
       time: time2,
       publicID: publicID,
     };

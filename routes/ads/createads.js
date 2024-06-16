@@ -20,13 +20,13 @@ router.post("/", admin, upload.single("ads_img"), async (req, res) => {
     console.log("File:", req.file);
 
     // Get the uploaded file's path
-    const ads_img_path = req.file ? req.file.path.replace(/\\/g, '/') : null; // Replace backslashes with forward slashes
+    const ads_img_path = req.file ? req.file.path.replace(/\\/g, "/") : null; // Replace backslashes with forward slashes
 
     // Prepare the object to insert it in the database
     const adsobj = {
       name: name,
       description: description,
-      ads_img: `"/home/elfarama_server/htdocs/api.elfarama.com/${ads_img_path}"`, // Save the relative file path within double quotes
+      ads_img: `"https://api.elfarama.com/uploads/${ads_img_path}"`, // Save the relative file path within double quotes
       ad_category: ad_category,
     };
 
@@ -40,4 +40,3 @@ router.post("/", admin, upload.single("ads_img"), async (req, res) => {
 });
 
 module.exports = router;
-
