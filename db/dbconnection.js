@@ -4,10 +4,10 @@ let connection;
 
 function handleDisconnect() {
   connection = mysql.createConnection({
-    host:"localhost",
+    host:"127.0.0.1",
     user:"root",
-    database:"elfarama_db",
-    password:"elfaramawy2024",
+    database:"elfarama",
+    password:"rq7V3qsBzZlJ3OVJ",
     port:"3306"
   });
 
