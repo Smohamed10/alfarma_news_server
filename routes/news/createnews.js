@@ -12,8 +12,6 @@ router.post("/", admin, upload.single("pic_path"), async (req, res) => {
   // get input
   const { writer_name, name, content, category, publicID } = req.body;
   try {
-    console.log("Request Body:", req.body);
-    console.log("File:", req.file);
     const query = util.promisify(connection.query).bind(connection); // transform query to promise to can use await/ async
     // get the current time
     function getCurrentDateInCairo() {
