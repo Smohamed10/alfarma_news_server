@@ -13,6 +13,7 @@ const cors = require("cors");
 // CORS middleware allowing requests from any origin
 app.use(cors());
 
+
 //======== run the app ============//
 // Run the app
 const port = 4004;
@@ -20,6 +21,11 @@ app.listen(port || process.env.port, () => {
     console.log(`SERVER IS RUNNING....${port}`);
 });
 
+<<<<<<< Updated upstream
+=======
+//========  cors =================//
+app(cors())
+>>>>>>> Stashed changes
 //======== require routes ========//
 
 //======== auth function =========//
@@ -41,3 +47,4 @@ app.use("/mostpopular",require("./routes/gets/getpopularnews"));
 app.use("/lastestnews",require("./routes/gets/getlastestnews"));
 app.use("/lastbycat",require("./routes/gets/lastbycat"));
 app.use("/last5",require("./routes/gets/last5"));
+
